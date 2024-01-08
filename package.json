@@ -2,6 +2,7 @@
   "name": "@znsconnect/sdk",
   "version": "0.0.1",
   "description": "SDK for lookup up and interacting with ZNS domains",
+  "private": false,
   "main": "./lib/index.js",
   "files": [
     "lib/**/*"
