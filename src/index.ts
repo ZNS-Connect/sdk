@@ -1,1 +1,4 @@
-export const myPackage = (taco = ''): string => `${taco} from my package`;
+import { createZnsPublicClient } from './client';
+import { Chain } from './chain';
+
+export { createZnsPublicClient, Chain };
