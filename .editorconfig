@@ -1,5 +1,10 @@
 root=true
 
+[*]
+charset=utf-8
+indent_style=space
+end_of_line = lf
+
 [src/**.ts]
 indent_style = space
 indent_size = 2
