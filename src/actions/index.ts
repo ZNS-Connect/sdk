@@ -6,7 +6,7 @@ export type ZnsPublicActions = {
   lookup: () => void;
 };
 
-export default function znsPublicActions<
+export function znsPublicActions<
   TTransport extends Transport = Transport,
   TChain extends Chain = Chain,
   TAccount extends Account | undefined = Account | undefined,
