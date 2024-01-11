@@ -9,7 +9,7 @@ import {
 import { Prettify } from 'viem/chains';
 
 import { Chain as ZnsChain } from './chain';
-import getActions, { ZnsPublicActions } from './actions';
+import znsPublicActions, { ZnsPublicActions } from './actions';
 
 export type ZnsPublicClientConfig<
   TTransport extends Transport = Transport,
@@ -39,5 +39,5 @@ export function createZnsPublicClient<
     chain: ZnsChain.toViemChain(chain) as TChain,
     ...params,
     account: undefined,
-  }).extend(getActions);
+  }).extend(znsPublicActions);
 }
