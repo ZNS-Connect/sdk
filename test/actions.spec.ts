@@ -1,4 +1,4 @@
-import { http } from 'viem';
+import { http, zeroAddress } from 'viem';
 
 import { Chain, createZnsPublicClient } from '../src';
 
@@ -8,12 +8,13 @@ describe('actions', () => {
     transport: http(),
   });
 
-  it('should lookup a domain', () => {
-    const result = client.lookup({
+  it('should lookup a domain', async () => {
+    const result = await client.lookup({
       name: 'syed',
       tld: 'zeta',
     });
 
-    expect(result).toBeUndefined();
+    expect(result.name).toEqual('syed');
+    expect(result.owner).not.toEqual(zeroAddress);
   });
 });

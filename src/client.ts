@@ -5,6 +5,8 @@ import {
   type Chain,
   type Client,
   type PublicRpcSchema,
+  publicActions,
+  PublicActions,
 } from 'viem';
 import { Prettify } from 'viem/chains';
 
@@ -22,7 +24,13 @@ export type ZnsPublicClient<
   TTransport extends Transport = Transport,
   TChain extends Chain = Chain,
 > = Prettify<
-  Client<TTransport, TChain, undefined, PublicRpcSchema, ZnsPublicActions>
+  Client<
+    TTransport,
+    TChain,
+    undefined,
+    PublicRpcSchema,
+    PublicActions & ZnsPublicActions
+  >
 >;
 
 export function createZnsPublicClient<
@@ -39,5 +47,7 @@ export function createZnsPublicClient<
     chain: ZnsChain.toViemChain(chain) as TChain,
     ...params,
     account: undefined,
-  }).extend(znsPublicActions);
+  })
+    .extend(publicActions)
+    .extend(znsPublicActions);
 }
