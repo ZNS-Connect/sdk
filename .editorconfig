@@ -8,3 +8,7 @@ end_of_line = lf
 [src/**.ts]
 indent_style = space
 indent_size = 2
+
+[test/**.ts]
+indent_style = space
+indent_size = 2
