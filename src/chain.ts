@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import { polygon, polygonMumbai } from 'viem/chains';
+import { polygon, polygonMumbai, Chain as ViemChain } from 'viem/chains';
 
 export enum Chain {
   Polygon,
@@ -7,7 +7,7 @@ export enum Chain {
 }
 
 export namespace Chain {
-  export function toViemChain(chain: Chain) {
+  export function toViemChain(chain: Chain): ViemChain {
     switch (chain) {
       case Chain.Polygon:
         return polygon;
