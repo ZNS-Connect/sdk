@@ -1,9 +1,10 @@
 import { type Transport, type Chain, type Account, type Client } from 'viem';
+import { type Prettify } from 'viem/chains';
 
-import lookup from './lookup';
+import lookup, { TLookupParams } from './lookup';
 
 export type ZnsPublicActions = {
-  lookup: () => void;
+  lookup: (params: Prettify<TLookupParams>) => void;
 };
 
 export function znsPublicActions<
@@ -12,7 +13,7 @@ export function znsPublicActions<
   TAccount extends Account | undefined = Account | undefined,
 >(client: Client<TTransport, TChain, TAccount>): ZnsPublicActions {
   return {
-    lookup: () => lookup(client),
+    lookup: params => lookup(client, params),
   };
 }
 
