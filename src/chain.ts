@@ -2,8 +2,8 @@
 import { polygon, polygonMumbai, Chain as ViemChain } from 'viem/chains';
 
 export enum Chain {
-  Polygon,
-  PolygonMumbai,
+  Polygon = 137,
+  PolygonMumbai = 80001,
 }
 
 export namespace Chain {
