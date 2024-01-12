@@ -18,45 +18,51 @@ npm install @znsconnect/sdk
 
 ## Usage
 
-```ts
-import { myPackage } from '@znsconnect/sdk';
+### Creating a client
 
-myPackage('hello');
-//=> 'hello from my package' // TODO
+```ts
+import { http } from 'viem';
+import { createZnsPublicClient, Chain } from '@znsconnect/sdk';
+
+const client = createZnsPublicClient({
+  chain: Chain.PolygonMumbai,
+  transport: http(),
+});
 ```
 
-## API
+### Lookup a domain
 
-### myPackage(input, options?)
+```ts
+const result = client.lookup({
+  name: 'syed',
+  tld: 'zeta',
+});
 
-#### input
+console.log(result.owner); //= 0x137645BC5f1A8efB2BAB22FAb6829DF8f12847BA
+```
 
-Type: `string`
+### Reverse Lookup a domain
 
-Lorem ipsum.
+```ts
+const result = client.reverseLookup({
+  address: '0x137645BC5f1A8efB2BAB22FAb6829DF8f12847BA',
+  tld: 'zeta',
+});
 
-#### options
+console.log(result.primaryDomain); //= { name: "syed', tokenId: 1 }
+```
 
-Type: `object`
-
-##### postfix
-
-Type: `string`
-Default: `rainbows`
-
-Lorem ipsum.
-
-[build-img]:https://github.com/ryansonshine/sdk/actions/workflows/release.yml/badge.svg
-[build-url]:https://github.com/ryansonshine/sdk/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/sdk
-[downloads-url]:https://www.npmtrends.com/sdk
-[npm-img]:https://img.shields.io/npm/v/sdk
-[npm-url]:https://www.npmjs.com/package/sdk
-[issues-img]:https://img.shields.io/github/issues/ryansonshine/sdk
-[issues-url]:https://github.com/ryansonshine/sdk/issues
-[codecov-img]:https://codecov.io/gh/ryansonshine/sdk/branch/main/graph/badge.svg
-[codecov-url]:https://codecov.io/gh/ryansonshine/sdk
-[semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release-url]:https://github.com/semantic-release/semantic-release
-[commitizen-img]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]:http://commitizen.github.io/cz-cli/
+[build-img]: https://github.com/ZNS-Connect/sdk/actions/workflows/release.yml/badge.svg
+[build-url]: https://github.com/ZNS-Connect/sdk/actions/workflows/release.yml
+[downloads-img]: https://img.shields.io/npm/dt/@znsconnect/sdk
+[downloads-url]: https://www.npmtrends.com/@znsconnect/sdk
+[npm-img]: https://img.shields.io/npm/v/@znsconnect/sdk
+[npm-url]: https://www.npmjs.com/package/@znsconnect/sdk
+[issues-img]: https://img.shields.io/github/issues/ZNS-Connect/sdk
+[issues-url]: https://github.com/ZNS-Connect/sdk/issues
+[codecov-img]: https://codecov.io/gh/ZNS-Connect/sdk/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/ZNS-Connect/sdk
+[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
+[commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+[commitizen-url]: http://commitizen.github.io/cz-cli/
